@@ -20,3 +20,13 @@ export const addExpense = async (request, response) => {
     }
 
 }
+
+// get expense data from DB
+export const getUser = async (request, response) => {
+    try{
+        const expenseData = await expenseRecord.find({});
+        response.status(200).json(expenseData);
+    } catch(error) {
+        response.status(404).json({message: error.message});
+    }
+}

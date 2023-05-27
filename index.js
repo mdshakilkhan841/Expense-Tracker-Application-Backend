@@ -12,7 +12,8 @@ dotenv.config();
 app.use(cors()); // to resolve cors issue
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended:true })); //for encode URL
-app.use('/', router)
+
+app.use(router)
 
 const PORT = process.env.PORT || 8001;
 const username = process.env.DB_USERNAME;
