@@ -87,11 +87,38 @@ export const getDateExpenses = async (request, response) => {
     }
 };
 
+
+
+// get date to date expense data from DB
+// export const getDateToDateExpenses = async (request, response) => {
+//     try {
+//       const { dateFrom, dateTo } = request.query;
+  
+//       const filter = {
+//         dateTime: {
+//           $gte: new Date(dateFrom),
+//           $lte: new Date(dateTo),
+//         },
+//       };
+  
+//       const expenseData = await expenseRecord.find(filter).sort({ dateTime: -1 }).exec();
+  
+//       response.status(200).json(expenseData);
+//     } catch (error) {
+//       console.error(error);
+//       response.status(500).json({ message: "Internal server error" });
+//     }
+//   };
+  
+
+
+
+
 // get single expense data from DB
 export const getExpense = async (request, response) => {
     // console.log(request.params)
     try {
-        const expenseData = await expenseRecord.find({expenseId: request.params.expenseId});
+        const expenseData = await expenseRecord.find({ expenseId: request.params.expenseId });
         response.status(200).json(expenseData);
     } catch (error) {
         response.status(404).json({ message: error.message });
@@ -113,7 +140,7 @@ export const editExpense = async (request, response) => {
     const editExpense = new expenseRecord(expense);
 
     try {
-        await expenseRecord.updateOne({expenseId: request.params.expenseId}, editExpense);
+        await expenseRecord.updateOne({ expenseId: request.params.expenseId }, editExpense);
         response.status(201).json(editExpense);
     } catch (error) {
         response.status(409).json({ message: error.message });
@@ -125,8 +152,8 @@ export const editExpense = async (request, response) => {
 // Delete single expense data from DB
 export const deleteExpense = async (request, response) => {
     try {
-        await expenseRecord.deleteOne({expenseId: request.params.expenseId});
-        response.status(200).json({ message: 'Expense Deleted Successfully'});
+        await expenseRecord.deleteOne({ expenseId: request.params.expenseId });
+        response.status(200).json({ message: 'Expense Deleted Successfully' });
     } catch (error) {
         response.status(409).json({ message: error.message });
     }

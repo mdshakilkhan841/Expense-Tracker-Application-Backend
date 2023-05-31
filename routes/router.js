@@ -6,18 +6,21 @@ const router = express.Router();
 router.post('/', addExpense)
 
 router.get('/expense-list/:expenseId', getExpense)
-router.get('/expense-report/:expenseId', getExpense)
-
-router.put('/expense-list/:expenseId', editExpense)
-router.put('/expense-report/:expenseId', editExpense)
-
 router.get('/expense-list', getExpensesList)
+router.put('/expense-list/:expenseId', editExpense)
+router.delete('/expense-list/:expenseId', deleteExpense)
+// router.get('/expense-report/:expenseId', getExpense)
+// router.put('/expense-report/:expenseId', editExpense)
+
+
+// router.get('/expense-report', getDateToDateExpenses)
+
+
 router.get('/expense-report', getDateExpenses)
 router.get('/category-report', getExpenses)
 router.get('/forecasted-expenses', getDateExpenses)
 
-router.delete('/expense-list/:expenseId', deleteExpense)
-router.delete('/expense-report/:expenseId', deleteExpense)
+// router.delete('/expense-report/:expenseId', deleteExpense)
 
 
 export default router;
