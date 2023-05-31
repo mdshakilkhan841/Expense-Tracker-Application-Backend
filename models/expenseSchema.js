@@ -9,7 +9,7 @@ const expenseSchema = new mongoose.Schema({
     notes: { type: String }
 });
 
-// auto-increment plugin for track individual expense id
+// auto-increment plugin for track individual expense id 
 expenseSchema.plugin(autoIncrement.plugin, {
     model: "expense-record",
     field: "expenseId",
