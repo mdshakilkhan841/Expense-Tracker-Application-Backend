@@ -9,6 +9,7 @@ router.get('/expense-list/:expenseId', getExpense)
 router.get('/expense-report/:expenseId', getExpense)
 
 router.put('/expense-list/:expenseId', editExpense)
+router.put('/expense-report/:expenseId', editExpense)
 
 router.get('/expense-list', getExpensesList)
 router.get('/expense-report', getDateExpenses)
